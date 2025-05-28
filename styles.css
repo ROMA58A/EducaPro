@@ -1,0 +1,402 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa; /* Fondo claro */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: #030303; /* Azul primario */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #007bff;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #fff !important;
+}
+
+.nav-link {
+    color: #fff !important;
+}
+
+.nav-link:hover {
+    color: #f8f9fa !important;
+}
+
+
+/* Hero Section */
+header {
+    background: linear-gradient(to right, #315174, #0056b3); /* Gradiente de azul */
+    color: #fff;
+    padding: 0; /* Sin padding superior para que ocupe toda la pantalla */
+    height: 100vh; /* Hacer que ocupe toda la altura de la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Para ocultar los elementos que salen de la pantalla */
+}
+
+header .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 2; /* Asegura que el texto esté sobre el fondo */
+}
+
+/* Título con animación */
+header h1 {
+    font-size: 4.5rem; 
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1.5s ease-in-out, bounce 2s infinite ease-in-out;
+}
+
+/* Texto con animación */
+header p {
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-top: 1rem;
+    animation: fadeInUp 2s ease-in-out;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación de rebote */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Fondo dinámico */
+header:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: pulse 4s infinite ease-in-out;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.5;
+    }
+}
+
+/* Añadir triángulos y círculos animados en el fondo */
+header .animated-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+header .animated-shapes .shape {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: moveShape 4s infinite ease-in-out;
+}
+
+header .animated-shapes .circle {
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+header .animated-shapes .triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid rgba(255, 255, 255, 0.6);
+}
+
+@keyframes moveShape {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(200px, -200px);
+    }
+    50% {
+        transform: translate(-200px, -300px);
+    }
+    75% {
+        transform: translate(150px, 250px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Inicialización aleatoria de formas */
+header .animated-shapes .shape:nth-child(1) {
+    top: 20%;
+    left: 30%;
+    animation-delay: 0s;
+}
+
+header .animated-shapes .shape:nth-child(2) {
+    top: 40%;
+    left: 50%;
+    animation-delay: 1s;
+}
+
+header .animated-shapes .shape:nth-child(3) {
+    top: 60%;
+    left: 70%;
+    animation-delay: 2s;
+}
+
+header .animated-shapes .shape:nth-child(4) {
+    top: 80%;
+    left: 40%;
+    animation-delay: 3s;
+}
+
+header .animated-shapes .shape:nth-child(5) {
+    top: 30%;
+    left: 70%;
+    animation-delay: 0.5s;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 3rem; /* Ajustar el tamaño en pantallas pequeñas */
+    }
+
+    header p {
+        font-size: 1.4rem; /* Ajustar el tamaño del texto */
+    }
+}
+
+* Sección Quiénes Somos */
+#quienes-somos .image-content {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideIn 1s forwards;
+    transition: transform 0.3s ease, border 0.3s ease, border-radius 0.3s ease; /* Agregar transición para border-radius */
+    border: 3px solid transparent; /* Borde inicial transparente */
+    border-radius: 0; /* Sin borde redondeado inicialmente */
+}
+
+#quienes-somos .image-content:hover {
+    transform: scale(1.1); /* Zoom en la imagen al pasar el mouse */
+    border: 3px solid #007bff; /* Borde azul al pasar el mouse */
+    border-radius: 50%; /* Borde circular al pasar el mouse */
+}
+
+#quienes-somos .text-content {
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+
+/* Servicios */
+#servicios .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    border: 3px solid transparent;  /* Borde inicial transparente */
+}
+
+#servicios .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    border: 3px solid #007bff;  /* Borde azul en hover */
+}
+
+/* Estilos para los iconos dentro de las tarjetas */
+#servicios .icon {
+    color: #007bff;
+    transition: transform 0.3s ease;
+}
+
+#servicios .icon:hover {
+    transform: scale(1.1);
+}
+
+
+#skills .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    border: 3px solid transparent; /* Borde inicial transparente */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden;
+}
+
+#skills .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    border: 3px solid #007bff; /* Borde azul en hover */
+}
+
+#skills .icon {
+    color: #007bff;
+    transition: transform 0.3s ease, color 0.3s ease;
+    font-size: 3rem; /* Tamaño grande del ícono */
+}
+
+#skills .icon:hover {
+    transform: scale(1.1);
+    color: #0056b3; /* Cambia a un azul más oscuro en hover */
+}
+
+#skills .progress {
+    height: 8px;
+    background-color: #e9ecef; /* Color de fondo del progreso */
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+#skills .progress-bar {
+    background-color: #007bff; /* Color del progreso */
+    transition: width 0.6s ease;
+    height: 100%;
+    border-radius: 5px;
+}
+
+/* Portafolio */
+ /* Estilos para las imágenes en el portafolio */
+#portafolio .card-img-top {
+    transition: transform 0.3s ease, border 0.3s ease;  /* Transición suave para escala y borde */
+    border: 3px solid transparent;  /* Borde inicial transparente */
+}
+
+/* Efecto hover: agrandar imagen y agregar borde azul */
+#portafolio .card-img-top:hover {
+    transform: scale(1.1);  /* Aumenta la escala de la imagen */
+    border: 3px solid #007bff;  /* Borde azul al hacer hover */
+}
+
+/* Estilo para las tarjetas del portafolio */
+#portafolio .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Efectos de transición para la tarjeta */
+}
+
+/* Efecto hover para la tarjeta del portafolio */
+#portafolio .card:hover {
+    transform: scale(1.05);  /* Escala ligera de la tarjeta */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);  /* Sombra de la tarjeta */
+}
+
+
+/* Colaboradores */
+#colaboradores img {
+    transition: transform 0.3s ease, border 0.3s ease;
+    border: 3px solid transparent;  /* Borde inicial transparente */
+}
+
+#colaboradores img:hover {
+    transform: scale(1.1);
+    border: 3px solid #007bff;  /* Borde azul en hover */
+}
+ 
+/* Contacto */
+#contacto form input, #contacto form textarea {
+    transition: border-color 0.3s ease;
+}
+
+#contacto form input:focus, #contacto form textarea:focus {
+    border-color: #007bff;
+}
+
+.social-icons a {
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+}
+
+/* Botones */
+button, .btn {
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Animaciones adicionales */
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
